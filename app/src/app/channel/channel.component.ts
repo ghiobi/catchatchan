@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {SailsService} from "angular2-sails";
 import {ActivatedRoute, Params} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'channel',
@@ -13,6 +14,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
   channel: any;
   body: string = '';
   messages: any;
+  onNewMessage: Subject<any> = new Subject();
 
   constructor(
     private sails: SailsService,
@@ -25,13 +27,14 @@ export class ChannelComponent implements OnInit, OnDestroy {
       .subscribe((data: {channel: any}) => {
         this.channel = data.channel;
         this.messages = this.channel.messages;
+        this.onNewMessage.next('message-created');
       });
 
     this.sails.on('message').subscribe((event) => {
       switch (event.verb) {
         case 'created':
           if(event.data.channel == this.channel.id)
-            this.messages.push(event.data);
+            this.createMessage(event.data);
           break;
         case 'destroyed':
           this.destroyMessage(event.previous);
@@ -44,7 +47,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
     if (this.body) {
       let user = this.auth.getUser();
       this.sails.post('/message', {body: this.body, channel: this.channel.id, user: user.name }).subscribe((response) => {
-        this.messages.push(response.data);
+        this.createMessage(response.data);
         this.body = '';
       });
     }
@@ -54,6 +57,11 @@ export class ChannelComponent implements OnInit, OnDestroy {
     this.sails.delete('/message/' + message.id).subscribe((response) => {
       this.destroyMessage(response.data)
     })
+  }
+
+  private createMessage(message) {
+    this.messages.push(message);
+    this.onNewMessage.next('message-created');
   }
 
   private destroyMessage(message) {

@@ -15,6 +15,7 @@ import {DashboardResolver} from "./services/dashboard.resolver";
 import {ChannelResolver} from "./services/channel.resolver";
 import { WelcomeComponent } from './channel/welcome/welcome.component';
 import {AuthService} from "./services/auth.service";
+import { ScrollDownDirective } from './directives/scroll-down.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AuthService} from "./services/auth.service";
     DashboardComponent,
     AsideComponent,
     ChannelComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ScrollDownDirective
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,0 +1,27 @@
+
+<div class="navigation-container">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <a class="navbar-brand">{{ channel.name }}</a>
+  </nav>
+</div>
+<div class="message-container">
+  <div class="message-list">
+    <div class="media message" *ngFor="let message of messages; trackBy: trackById" (click)="destroy(message)">
+      <img class="d-flex align-self-start mr-3" src="http://placehold.it/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <h5 class="mt-0">{{ message.user }} <span class="text-muted">{{ message.createdAt | date:'shortTime' }}</span></h5>
+        <p>{{ message.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chat-container">
+  <form (submit)="message()">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="body" name="body" required autocomplete="off">
+      <span class="input-group-btn">
+          <button class="btn">Send</button>
+        </span>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+$aside_width: 240px;
+
+:host{
+  display: flex;
+  height: 100%;
+}
+.channel-container{
+  width: calc(100% - #{$aside_width});
+}
+@media (max-width: 767px) {
+  .channel-container{
+    width: 100%;
+  }
+}
+aside{
+  width: $aside_width;
+}
+@media (max-width: 767px) {
+  aside{
+    position: absolute;
+    left: -$aside_width;
+  }
+}

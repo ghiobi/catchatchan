@@ -1,0 +1,47 @@
+<ng-template #modal let-close="close" let-dismiss="dismiss">
+  <form [formGroup]="form" novalidate (submit)="login(form, modal, close)">
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+          <label for="">Your Name</label>
+          <input type="text" class="form-control" formControlName="name">
+          <div class=""></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" type="submit">Sign In</button>
+    </div>
+  </form>
+</ng-template>
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="nav-link" (click)="openAuth(modal)">Sign In</a>
+</nav>
+<div class="jumbotron">
+  <h1 class="display-3">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-sm-4">
+      Get in touch with real people.
+    </div>
+    <div class="col-sm-4">
+      Find Friends
+    </div>
+    <div class="col-sm-4">
+      A place to share ideas instantly.
+    </div>
+  </div>
+</div>

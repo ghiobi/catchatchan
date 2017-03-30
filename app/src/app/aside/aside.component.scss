@@ -1,0 +1,65 @@
+$aside_bgcolor: #292929;
+$aside_fav_bgcolor: #1b1b1b;
+$aside_font_color: #e1e0e0;
+
+:host {
+  height: 100%;
+  background-color: $aside_bgcolor;
+  display: flex;
+  color: $aside_font_color;
+  & a {
+    color: $aside_font_color;
+  }
+}
+
+.friends {
+  width: 50px;
+  background-color: $aside_fav_bgcolor;
+  > ul {
+    list-style-type: none;
+    margin-top: 19px;
+    padding: 0;
+    > li {
+      padding-left: 10px;
+      padding-right: 10px;
+      & + li {
+        margin-top: 8px;
+      }
+      > img {
+        max-width: 100%;
+        border-radius: 10%;
+      }
+      > div {
+        font-size: .6em;
+        text-align: center;
+        padding-top: 3px;
+      }
+    }
+  }
+}
+
+.channel-list {
+  width: calc(100% - 50px);
+  padding: 15px;
+  > .title {
+    font-size: .8em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+    font-size: .8em;
+    font-weight: 300;
+  }
+  a {
+    color: #b6b6b6;
+    display: block;
+    text-decoration: none;
+    &.active {
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+}

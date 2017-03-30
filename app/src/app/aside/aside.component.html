@@ -1,0 +1,30 @@
+
+<div class="friends">
+  <ul>
+    <li *ngFor="let friend of friends">
+      <img src="http://lorempixel.com/85/85/">
+      <div>{{ friend }}</div>
+    </li>
+  </ul>
+</div>
+<div class="channel-list">
+  <div class="title">
+    CHANNELS ({{ channels.length }})
+    <ng-template #new>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="name" name="name" required>
+          <span class="input-group-btn">
+            <button class="btn" (click)="createChannel(new)"><i class="fa fa-plus-circle"></i></button>
+          </span>
+        </div>
+    </ng-template>
+    <span [ngbPopover]="new" [placement]="'bottom'" class="fa fa-plus"></span>
+  </div>
+  <ul>
+    <li *ngFor="let channel of channels">
+      <a [routerLink]="['channel', channel.id]" routerLinkActive="active">
+        + {{ channel.name }}
+      </a>
+    </li>
+  </ul>
+</div>

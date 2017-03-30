@@ -1,0 +1,35 @@
+
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.message-container{
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: scroll;
+}
+.message {
+  > img {
+    width: 35px;
+    border-radius: 10%;
+  }
+  > .media-body{
+    > h5 {
+      font-size: .9em;
+      font-weight: 400;
+      margin-bottom: 5px;
+      > span {
+        font-size: .65em;
+      }
+    }
+    > p {
+      font-size: .8em;
+      word-break: break-word;
+    }
+  }
+}
+.chat-container{
+  padding: 10px 15px;
+  border-top: 1px #eee solid;
+}
